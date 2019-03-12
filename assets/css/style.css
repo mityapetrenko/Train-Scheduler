@@ -1,0 +1,39 @@
+.jumbotron{
+    text-align: center;
+    background-color:rgb(13,99,136);
+    border-radius: 10px;
+    
+}
+h1{
+    font-weight: bold;
+    color:white;
+}
+h2{
+    color:rgb(13,99,136);
+}
+p.lead{
+    color:white;
+}
+
+form{
+    text-align: left;
+    margin-top: 40px;
+    
+}
+label{
+    font-weight: bold;
+}
+div.form-group.col-md-4{
+    padding:5px;
+}
+body{
+    background-color:whitesmoke;
+}
+.button{
+    background-color: rgb(13,99,136);
+}
+.table{
+    border-width: 5px;
+    background-color: white;
+    color:black;
+}

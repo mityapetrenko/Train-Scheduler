@@ -9,14 +9,15 @@
     <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.8.6/firebase.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/css/style.css">
     
 </head>
 <body>
-    <div id="wrapper">
+    <div class="container">
             <div class="jumbotron jumbotron-fluid">
                     <div class="container">
-                      <h1 class="display-4">Train Scheduler</h1>
+                      <h1 class="display-4">Train Scheduler <i class="fas fa-train"></i></h1>
                       <p class="lead">Travel in style with the ABC Train Company</p>
                     </div>
             </div>
@@ -32,18 +33,14 @@
                     </thead>
                     <tbody id="tableBody">
                       <tr>
-                        <th scope="row"></th>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                
                       </tr>
                     </tbody>
                   </table>
+                  <h2>Add your train information:</h2>
                   <form>
                         <div class="form-row">
-                          <div class="form-group col-md-4">
+                          <div class="form-group col-md-4" style="padding-right:10px;">
                             <label for="inputName">Train Name</label>
                             <input type="text" class="form-control" id="inputName" placeholder="">
                           </div>
@@ -60,7 +57,7 @@
                           <label for="inputRate">Frequency (min)</label>
                           <input type="text" class="form-control" id="inputFrequency" placeholder="">
                         </div>
-                        <button type="submit" class="btn btn-primary" id="add-train">Submit</button>
+                        <button type="submit" class="btn btn-primary" id="add-train">Add Train</button>
                       </form>        
     </div>
     <script src="assets/js/app.js"></script>

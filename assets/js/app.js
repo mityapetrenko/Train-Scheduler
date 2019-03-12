@@ -30,29 +30,40 @@ var frequency="";
         frequency:frequency,
         dateAdded:firebase.database.ServerValue.TIMESTAMP,
         })
+        $("#inputName").val("");
+        $("#inputDestination").val("");
+        $("#inputTime").val("");
+        $("#inputFrequency").val("");
+
         });
 
 
 
         database.ref().orderByChild("dateAdded").on("child_added", function(childSnapshot) {
-                var nextArrival=$(childSnapshot.val().nextArrival);
-                var minAway=$(childSnapshot.val().minAway);
-                var currentTime=moment().format("HH:mm");
-            var rows ="<tr><td>" + childSnapshot.val().name + "</td><td>" + childSnapshot.val().destination + "</td><td>" + childSnapshot.val().nextArrival + "</td><td>" + childSnapshot.val().minAway + "</td></tr>";
-                console.log(currentTime);
-            $("#tableBody").append(rows);
-
-            console.log(childSnapshot.val());
+             console.log(currentTime);
+            var currentTime=moment().format("HH:mm");
+        
             console.log(childSnapshot.val().name);
             console.log(childSnapshot.val().destination);
             console.log(childSnapshot.val().trainTime);
             console.log(childSnapshot.val().frequency);
-            var trainArrival = database.trainTime;
-                console.log(trainArrival);
-            // Calculate the months worked using hardcore math
-            // To calculate the months worked
-            var nextArrival =moment(trainArrival).fromNow();
-            console.log(nextArrival);
-
+            var trainFrequency = childSnapshot.val().frequency;
+                console.log(trainFrequency);
+            var initialTime= childSnapshot.val().trainTime;
+            console.log(initialTime);
+            var firstTimeConverted = moment(initialTime, "HH:mm").subtract(1, "years");
+            console.log(firstTimeConverted); 
+            var diffTime = moment().diff(moment(firstTimeConverted), "minutes");
+            console.log("DIFFERENCE IN TIME: " + diffTime);
+            var tRemainder = diffTime % trainFrequency;
+            console.log(tRemainder);
+            var tMinutesTillTrain = trainFrequency - tRemainder;
+            console.log("MINUTES TILL TRAIN: " + tMinutesTillTrain);
+            var nextTrain = moment().add(tMinutesTillTrain, "minutes");
+            console.log("ARRIVAL TIME: " + moment(nextTrain).format("hh:mm"));
+        
+            var rows ="<tr><td>" + childSnapshot.val().name + "</td><td>" + childSnapshot.val().destination + "</td><td>" + childSnapshot.val().frequency + "</td><td>" + moment(nextTrain).format("HH:mm") + "</td><td>" + tMinutesTillTrain + " min" +"</td></tr>";
+               
+            $("#tableBody").append(rows);
     });
         
